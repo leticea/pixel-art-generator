@@ -37,3 +37,22 @@ span {
   gap: 10px;
 }
 
+button {
+  background-color: #43A047;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  color: #FFF;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  width: 70px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+}
+
