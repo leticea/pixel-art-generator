@@ -95,5 +95,25 @@ function checker(elementId) {
         element.style.backgroundColor = "transparent";
       }
     }
-  })
+  });
 }
+
+clearGridButton.addEventListener("click", () => {
+  container.innerHTML = "";
+});
+
+eraseBtn.addEventListener("click", () => {
+  erase = true;
+});
+
+paintBtn.addEventListener("click", () => {
+  paint = false;
+});
+
+gridWidth.addEventListener("input", () => {
+  widthValue.innerHTML = gridWidth.value < 9 ? `0${gridWidth.value}` : gridWidth.value;
+});
+
+gridHeight.addEventListener("input", () => {
+  heightValue.innerHTML = gridHeight.value < 9 ? `0${gridHeight.value}` : gridHeight.value;
+});
