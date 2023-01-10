@@ -54,6 +54,7 @@ gridButton.addEventListener("click", () => {
       let col = document.createEvent("div");
       col.classList.add("gridCol");
       col.setAttribute("id", `gridCol${count}`);
+
       col.addEventListener(events[deviceType].down, () => {
         draw = true;
         if (erase) {
@@ -62,7 +63,23 @@ gridButton.addEventListener("click", () => {
         } else {
           col.style.backgroundColor = colorButton.value;
         }
-      })
+      });
+
+      col.addEventListener(events[deviceType].move, (e) => {
+        let elementId = document.elementFromPoint(
+          !isTouchDevice() ? e.clientX : e.touches[0].clientX,
+          !isTouchDevice() ? e.clientY : e.touches[0].clientY,
+        ), id;
+        checker(elementId);
+      });
+
+      col.addEventListener(events[deviceType].up, () => {
+        draw = false;
+      });
+
+      div.appendChild(col);
     }
+
+    container.appendChild(div);
   }
 });
