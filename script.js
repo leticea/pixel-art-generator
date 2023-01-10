@@ -83,3 +83,17 @@ gridButton.addEventListener("click", () => {
     container.appendChild(div);
   }
 });
+
+function checker(elementId) {
+  let gridColumns = document.querySelectorAll(".gridCol");
+  gridColumns.forEach((element) => {
+    if (elementId == element.id) {
+      if (draw && !erase) {
+        element.style.backgroundColor = colorButton.value;
+
+      } else if (draw && erase) {
+        element.style.backgroundColor = "transparent";
+      }
+    }
+  })
+}
