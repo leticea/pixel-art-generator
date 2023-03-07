@@ -13,13 +13,13 @@ const events = {
   mouse: {
     down: "mousedown",
     move: "mousemove",
-    up: "mouseup"
+    up: "mouseup",
   },
   touch: {
     down: "touchstart",
     move: "touchmove",
-    up: "touchend"
-  }
+    up: "touchend",
+  },
 };
 
 let deviceType = "";
@@ -32,7 +32,6 @@ const isTouchDevice = () => {
     document.createEvent("TouchEvent");
     deviceType = "touch";
     return true;
-
   } catch (e) {
     deviceType = "mouse";
     return false;
@@ -59,7 +58,6 @@ gridButton.addEventListener("click", () => {
         draw = true;
         if (erase) {
           col.style.backgroundColor = "transparent";
-
         } else {
           col.style.backgroundColor = colorButton.value;
         }
@@ -68,7 +66,7 @@ gridButton.addEventListener("click", () => {
       col.addEventListener(events[deviceType].move, (e) => {
         let elementId = document.elementFromPoint(
           !isTouchDevice() ? e.clientX : e.touches[0].clientX,
-          !isTouchDevice() ? e.clientY : e.touches[0].clientY,
+          !isTouchDevice() ? e.clientY : e.touches[0].clientY
         ).id;
         checker(elementId);
       });
@@ -90,7 +88,6 @@ function checker(elementId) {
     if (elementId == element.id) {
       if (draw && !erase) {
         element.style.backgroundColor = colorButton.value;
-        
       } else if (draw && erase) {
         element.style.backgroundColor = "transparent";
       }
@@ -111,11 +108,13 @@ paintBtn.addEventListener("click", () => {
 });
 
 gridWidth.addEventListener("input", () => {
-  widthValue.innerHTML = gridWidth.value < 9 ? `0${gridWidth.value}` : gridWidth.value;
+  widthValue.innerHTML =
+    gridWidth.value < 9 ? `0${gridWidth.value}` : gridWidth.value;
 });
 
 gridHeight.addEventListener("input", () => {
-  heightValue.innerHTML = gridHeight.value < 9 ? `0${gridHeight.value}` : gridHeight.value;
+  heightValue.innerHTML =
+    gridHeight.value < 9 ? `0${gridHeight.value}` : gridHeight.value;
 });
 
 window.onload = () => {
